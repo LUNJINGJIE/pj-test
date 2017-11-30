@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--指明 controller 所在包，并扫描其中的注解-->
+    <!--是对包进行扫描，实现注释驱动Bean定义，同时将bean自动注入容器中使用。即解决了@Controller标识的类的bean的注入和使用。-->
+    <context:component-scan base-package="com.ssm.controller" />
+
+
+    <!--js、image、css等静态资源访问的相关配置-->
+    <!--<mvc:resources mapping="/js/**" location="/js/" /> 第一种方式：springmvc自己处理，通过此方式，静态文件能放在任何地方，包括jar包里-->
+    <!--第二种方式：将静态资源的处理经由Spring MVC框架交回Web应用服务器处理，默认在web根目录下查找-->
+    <mvc:default-servlet-handler/>
+
+
+    <!--开启springmvc注解模式-->
+    <!--相当于注册了DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter两个bean，配置一些messageconverter。即解决了@Controller注解的使用前提配置。-->
+    <mvc:annotation-driven />
+
+
+    <!--视图解析器的相关配置-->
+    <bean id="JspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <!--所需访问的文件路径前缀-->
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <!--访问的文件的后缀-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>
