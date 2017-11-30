@@ -1,1 +1,1 @@
-ssm project1
+ssm project
