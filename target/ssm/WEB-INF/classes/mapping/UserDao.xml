@@ -7,5 +7,11 @@
     <select id="selectUser" resultType="com.ssm.entity.User" parameterType="int">
         SELECT * FROM user WHERE id = #{id}
     </select>
+    <select id="findByLoginNP" resultType="com.ssm.entity.User" parameterType="String">
+        SELECT * FROM user WHERE name = #{username} AND password = #{password}
+    </select>
+    <select id="getUserByName" resultType="com.ssm.entity.User" parameterType="String">
+        SELECT * FROM user WHERE name = #{username}
+    </select>
 
 </mapper>

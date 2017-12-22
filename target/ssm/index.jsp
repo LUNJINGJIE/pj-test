@@ -1,9 +1,5 @@
-<html>
-<body>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 
-<form action="/select" method="post">
-    <input type="text" name="id"/>
-    <input type="submit" value="ok">
-</form>
-</body>
-</html>
+<%
+    response.sendRedirect(request.getContextPath() + "/toLogin");
+%>

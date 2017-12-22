@@ -13,9 +13,16 @@ public class TestSSM {
 
     @Resource
     private UserService userService;
+
     @Test
-    public void testSSM(){
+    public void testSSM() {
         User user = userService.selectUser(1);
+        System.out.println(user);
+    }
+
+    @Test
+    public void testUserService() {
+        User user = userService.findByNameAndPassword("admin","1234");
         System.out.println(user);
     }
 }

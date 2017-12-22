@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-    success！
+    success！<br>
+    <a href="logout">退出登录</a>
 </body>
 </html>

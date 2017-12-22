@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+    <description>Shiro配置</description>
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/toLogin.action"/>
+        <property name="successUrl" value="/about.jsp"/>
+        <property name="unauthorizedUrl" value="/system/noperms.jsp"/>
+
+        <property name="filterChainDefinitions">
+            <value>
+                /login.jsp* = anon
+                /login.action* = anon
+                /*.html* = anon
+                /*.jsp* = authc
+                /*.action* = authc
+                /*.do* = authc
+            </value>
+        </property>
+    </bean>
+
+    <bean id="myRealm" class="com.ssm.service.security.MonitorRealm"></bean>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- 基于ehCache来缓存用户认证信息和授权信息的实现 -->
+        <property name="cacheManager" ref="shiroEhcacheManager"/>
+        <property name="Realm" ref="myRealm"/>
+        <!-- sessionMode参数设置为native时，那么shrio就将用户的基本认证信息保存到缺省名称为shiro-activeSessionCache 的Cache中
+        这个根据官方文档，基本设计开启就可以，其他交由session管理
+        -->
+        <property name="sessionMode" value="native"/>
+        <!--设置自定义realm -->
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
+
+    <!-- 用户授权/认证信息Cache, 采用EhCache缓存 -->
+    <bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml"/>
+    </bean>
+
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionDAO" ref="sessionDAO"/>
+        <property name="globalSessionTimeout" value="1800000"/>
+    </bean>
+    <!-- 目前保存在ECache 可以通过实现自定义的sessionDao来把用户认证信息保存在memcache，ldap中，达到和其他应用共享用户认证信息的目的，以此达到SSO的目的 -->
+    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+        <property name="activeSessionsCacheName" value="shiroActiveSessionCache"/>
+    </bean>
+
+    <!-- 保证实现了Shiro内部lifecycle函数的bean执行  有冲突，使用不了shiro的注解，暂使用其API-->
+    <!-- 	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+        AOP式方法级权限检查
+        <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+            <property name="proxyTargetClass" value="true" />
+        </bean>
+
+        <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+            <property name="securityManager" ref="securityManager"/>
+        </bean> -->
+
+</beans>

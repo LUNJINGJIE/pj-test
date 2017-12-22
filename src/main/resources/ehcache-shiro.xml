@@ -1,0 +1,23 @@
+<ehcache updateCheck="false" name="shiroCache">
+    
+    <defaultCache
+            maxElementsInMemory="1000"
+            eternal="false"
+            timeToIdleSeconds="0"
+            timeToLiveSeconds="0"
+            overflowToDisk="false"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="1800"/>
+            
+            
+     <!-- sessioncache -->
+     <cache name="shiroActiveSessionCache"  
+             maxElementsInMemory="10000"
+             eternal="false" 
+             overflowToDisk="false" 
+             diskPersistent="false"
+             timeToIdleSeconds="0" 
+             timeToLiveSeconds="0" 
+             diskExpiryThreadIntervalSeconds="600" /> 
+                               
+</ehcache>
