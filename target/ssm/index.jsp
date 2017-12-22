@@ -1,7 +1,7 @@
 <html>
 <body>
 
-<form action="/ssm/select" method="post">
+<form action="/select" method="post">
     <input type="text" name="id"/>
     <input type="submit" value="ok">
 </form>
