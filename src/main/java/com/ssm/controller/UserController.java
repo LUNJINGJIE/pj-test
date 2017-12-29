@@ -63,7 +63,7 @@ public class UserController {
                 currentUser.login(token);
                 // 1.验证用户，从数据库获取user对象
                 User user = userService.findByNameAndPassword(name, password);
-                System.out.println(user);
+                System.out.println(user.getName());
 
                 // 菜单资源分配
                 /*// 2.根据user对象获取roleId
