@@ -9,13 +9,6 @@ public class person {
 
     private String password;
 
-    public person(Integer id, String username, String sex, String password) {
-        this.id = id;
-        this.username = username;
-        this.sex = sex;
-        this.password = password;
-    }
-
     public person(String username, String sex, String password) {
         this.username = username;
         this.sex = sex;
@@ -34,11 +27,11 @@ public class person {
         this.id = id;
     }
 
-    public String getusername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setusername(String username) {
+    public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
     }
 
@@ -56,15 +49,5 @@ public class person {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
-    }
-
-    @Override
-    public String toString() {
-        return "person{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", sex='" + sex + '\'' +
-                ", password='" + password + '\'' +
-                '}';
     }
 }

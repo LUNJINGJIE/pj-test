@@ -2,8 +2,6 @@ package com.ssm.mybatis.test.dao;
 
 import com.ssm.entity.person;
 
-import java.util.HashMap;
-
 public interface personMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,5 +14,4 @@ public interface personMapper {
     int updateByPrimaryKeySelective(person record);
 
     int updateByPrimaryKey(person record);
-
 }
