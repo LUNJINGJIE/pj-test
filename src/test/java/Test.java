@@ -1,15 +1,17 @@
-public class Test
-{
-    public static int getValue() {
-        System.out.println("1");
-        try {
-            return 0;
-        } finally {
-            return 1;
-        }
-    }
+public class Test {
     public static void main(String[] args) {
-        System.out.println(0);
-        System.out.println("return value of getValue(): " + getValue());
+        int i = 0;
+        i=i++;
+        System.out.println(i);
+    }
+
+    public static int getValue() {
+        int i = 1;
+        try {
+            i = 4;
+        } finally {
+            i++;
+            return i;
+        }
     }
 }

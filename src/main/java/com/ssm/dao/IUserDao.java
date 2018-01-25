@@ -4,6 +4,8 @@ import com.ssm.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface IUserDao {
     User selectUser(int id);
@@ -22,4 +24,5 @@ public interface IUserDao {
      */
     User getUserByName(@Param("username")String userName);
 
+    List getUserList();
 }

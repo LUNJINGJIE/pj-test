@@ -70,4 +70,22 @@ public class TestX {
             System.out.println(a);
         }
     }
+
+    /**
+     * 测试可变参数
+     * 原理为数组
+     */
+    @Test
+    public void testParam() {
+        int max = getMaxValue(1, 2, 3, 45, 1, 123, 4, 2, 20);
+        System.out.println(max);
+    }
+
+    public int getMaxValue(int... numbers) {
+        int max = Integer.MIN_VALUE;
+        for (int num : numbers) {
+            max = num > max ? num : max;
+        }
+        return max;
+    }
 }
