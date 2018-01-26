@@ -14,4 +14,8 @@
         SELECT * FROM user WHERE name = #{username}
     </select>
 
+    <select id="getUserList">
+        SELECT name FROM user
+    </select>
+
 </mapper>

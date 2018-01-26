@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="test_procedure@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="test_procedure">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="employee"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="jeesite"/>
+    <schema id="6" parent="1" name="mysql"/>
+    <schema id="7" parent="1" name="performance_schema"/>
+    <schema id="8" parent="1" name="prd_insp_riversite"/>
+    <schema id="9" parent="1" name="sakila"/>
+    <schema id="10" parent="1" name="sqlpractive"/>
+    <schema id="11" parent="1" name="ssm"/>
+    <schema id="12" parent="1" name="test"/>
+    <schema id="13" parent="1" name="testmybatis"/>
+    <schema id="14" parent="1" name="world"/>
+    <table id="15" parent="2" name="person"/>
+    <routine id="16" parent="2" name="add">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="17" parent="2" name="pro_insert_data">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <column id="18" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="19" parent="15" name="username">
+      <Position>2</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="20" parent="15" name="sex">
+      <Position>3</Position>
+      <DataType>varchar(2)|0</DataType>
+    </column>
+    <column id="21" parent="15" name="password">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="22" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

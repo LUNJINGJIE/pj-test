@@ -17,7 +17,7 @@
 
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="/toLogin.action"/>
+        <property name="loginUrl" value="/toLogin"/>
         <property name="successUrl" value="/about.jsp"/>
         <property name="unauthorizedUrl" value="/system/noperms.jsp"/>
 

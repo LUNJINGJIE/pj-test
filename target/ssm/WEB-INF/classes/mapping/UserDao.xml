@@ -8,10 +8,14 @@
         SELECT * FROM user WHERE id = #{id}
     </select>
     <select id="findByLoginNP" resultType="com.ssm.entity.User" parameterType="String">
-        SELECT * FROM user WHERE name = #{username} AND password = #{password}
+        select * from user u where u.name = #{username} AND u.password = #{password}
     </select>
     <select id="getUserByName" resultType="com.ssm.entity.User" parameterType="String">
         SELECT * FROM user WHERE name = #{username}
+    </select>
+
+    <select id="getUserList">
+        SELECT name FROM user
     </select>
 
 </mapper>
